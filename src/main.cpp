@@ -1,15 +1,33 @@
-﻿#include <iostream>
+﻿#include "Grid.h"
 
-#include <Grid.h>
+#include <iostream>
+#include <thread>
+
+#include "Game.h"
 #include "ConsoleRenderer.h"
+
+Grid getStartGrid() {
+	Grid grid(30, 20);
+
+	grid.set(10, 10, true);
+	grid.set(11, 10, true);
+	grid.set(12, 10, true);
+	grid.set(11, 9, true);
+
+	return grid;
+}
+
 int main()
 {
-	Grid grid(20, 10);
+	int nSteps = 255;
+	Game game = Game(getStartGrid());
 
-	grid.set(5, 1, true);
-	grid.set(5, 2, true);
+	for (int i = 0; i < 200; ++i) {
+		ConsoleRenderer::draw(game.getGrid());
+		game.step();
+		std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+	}
 
-	ConsoleRenderer::draw(grid);
 	
 	return 0;
 }
