@@ -6,13 +6,16 @@
 class Grid {
 private:
 	std::vector<std::vector<bool>> m_cells;
-	const size_t m_height;
-	const size_t m_width;
+	size_t m_height;
+	size_t m_width;
+
 public:
 	Grid(size_t width, size_t height);
 
 	bool get(const size_t x, const size_t y) const;
 	void set(const size_t x, const size_t y, const bool value);
+
+	int getLiveNeighbours(const size_t x, const size_t y) const;
 
 	size_t getWidth() const;
 	size_t getHeight() const;
