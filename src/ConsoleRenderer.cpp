@@ -1,9 +1,12 @@
 #include "ConsoleRenderer.h"
-#include <iostream>
 
+#include <iostream>
+#include <cstdlib>
 
 void ConsoleRenderer::draw(const Grid& grid)
 {
+    system("cls");
+
     const size_t width = grid.getWidth();
     const size_t height = grid.getHeight();
 
