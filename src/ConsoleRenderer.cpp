@@ -3,21 +3,18 @@
 #include <iostream>
 #include <cstdlib>
 
-void ConsoleRenderer::draw(const Grid& grid)
+void ConsoleRenderer::draw(const Grid& grid, const Viewport& viewport)
 {
     system("cls");
 
-    const size_t width = grid.getWidth();
-    const size_t height = grid.getHeight();
+    std::cout << std::string(viewport.viewWidth * 2 + 2, '-') << '\n';
 
-    std::cout << std::string(width * 2 + 2, '-') << '\n';
-
-    for (size_t y = 0; y < height; ++y) {
+    for (size_t y = 0; y < viewport.viewHeight; ++y) {
         std::cout << "|";
-        for (size_t x = 0; x < width; ++x) {
-            std::cout << (grid.get(x, y) ? "* " : "  ");
+        for (size_t x = 0; x < viewport.viewWidth; ++x) {
+            std::cout << (grid.get(x + viewport.xGridPos, y + viewport.yGridPos) ? "* " : "  ");
         }
         std::cout << "| \n";
     }
-    std::cout << std::string(width*2 + 2, '-') << '\n'; // separator line
+    std::cout << std::string(viewport.viewWidth * 2 + 2, '-') << '\n'; // separator line
 }

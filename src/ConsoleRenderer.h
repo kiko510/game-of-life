@@ -2,11 +2,12 @@
 #define CONSOLE_RENDERER__H
 
 #include "Grid.h"
+#include "Viewport.h"
 
 class ConsoleRenderer
 {
 public:
-	static void draw(const Grid& grid);
+	static void draw(const Grid& grid, const Viewport& viewport);
 
 };
 

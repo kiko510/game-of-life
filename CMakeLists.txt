@@ -19,7 +19,7 @@ project ("game_of_life")
 file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS src/*.cpp)
 
 # Create executable
-add_executable(game_of_life ${SOURCES} "src/ConsoleRenderer.cpp" "src/ConsoleRenderer.h" "src/Game.cpp" "src/Game.h")
+add_executable(game_of_life ${SOURCES} "src/ConsoleRenderer.cpp" "src/ConsoleRenderer.h" "src/Game.cpp" "src/Game.h"    "src/Viewport.h")
 
 # Include src/ for headers like #include "Grid.hpp"
 target_include_directories(game_of_life PRIVATE src)
